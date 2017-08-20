@@ -13,7 +13,7 @@ class Product extends Model
 
   /*Method to save picture with attached seconds in the name of the uploaded file
   to avoid overwriting because of files with same name*/
-  /*
+
     public function setpictureAttribute($picture){
       //Si la picture existe
       if(! empty($picture)){
@@ -28,5 +28,5 @@ class Product extends Model
         $name = "fashion.jpg";
         $this->attributes['picture'] = $name;
       }
-    }*/
+    }
 }

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -112,13 +112,13 @@
               </tbody>
             </table>
             <br></br>
-            <table class="table" align="center">
+            <table align="center">
               <thead>
                 <th>Product</th>
                 <th>Price</th>
                 <th>Type</th>
                 <th>Image</th>
-                <th>Action</th>
+                <th>Actions</th>
               </thead>
               @foreach($products as $product)
                 <?php
@@ -153,12 +153,37 @@
                   <td><img src="../products_images/{{$pic}}" width="100" height="85"/></td>
                 @endif
                 <td>
+                  <button  type="button" value="<?php  echo $product->id?>"
+                    Onclick="mostrar(this.value);" class="btn btn-info btn-sm" data-toggle='modal'
+                    data-target='#myModal'>Edit product</button>
+                </td>
+                <td>
                   {!!Form::model($product,['route'=>['product.destroy',$product->id],'method'=>'DELETE'])!!}
-          <button type="submit" onclick="return confirm('¿Do you really want to delete this item?')">Delete product</button>
+          <button type="submit" onclick="return confirm('¿Do you really want to delete this item?')" class="btn-danger btn-sm">Delete product</button>
                 </td>
               </tbody>
             @endforeach
             </table>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Datail of selected product</h4>
+              </div>
+              <div class="modal-body">
+                @include('layouts.product')
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </body>
+    <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
+    {!!Html::script('js/popup.js')!!}
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 </html>

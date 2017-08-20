@@ -13,6 +13,7 @@
 
 Route::get('/','ProductController@index');
 Route::get('Merch/{type}','ProductController@showProduct')->name('Merch');
+Route::get('product/showDetails/{id}','ProductController@show_details')->name('showDetails');
 Route::resource('product','ProductController');
 
 Auth::routes();

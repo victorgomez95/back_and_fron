@@ -1,0 +1,362 @@
+.header {
+    height: 10px;
+    width: 100%;
+    background: black;
+}
+
+.subheader {
+    height: auto;
+}
+
+#subheader-sroll {
+    height: 70px;
+    left: 0;
+    top: 50px;
+    float: left;
+    width: 100%;
+    -ms-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+#subheader-sroll h1 {
+    font-size: 30px;
+    font-family: Arial;
+    text-align: center;
+    line-height: 50px;
+    -ms-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+#subheader-sroll.small {
+    height: 70px;
+    line-height: 35px;
+}
+
+#subheader-sroll.small h1 {
+    height: 70px;
+    line-height: 35px;
+    font-size: 25px;
+}
+
+nav {
+    line-height: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 1.6em 2em;
+    text-decoration: none;
+    color: black;
+    font-family: "arial";
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.3em;
+}
+
+.mainTitle {
+    width: 100%;
+    height: 100px;
+}
+
+.mainTitle h2 {
+    font-size: 30px;
+    margin: 150px 0 0 0;
+    color: black;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.divnav {
+    width: 100%;
+    font-family: "museo-sans", sans-serif;
+    font-weight: 700;
+    font-family: "proxima-nova";
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.3em;
+    text-align: center;
+}
+
+.header_principalOptions {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+.divnav-item {
+    padding: 1.6em 2em;
+    display: inline-block;
+}
+
+.divnav-item a {
+    text-decoration: none;
+    color: #9D9F9D;
+}
+
+.principalGalery {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.gallery_img1 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 600px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+.gallery_img2 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 300px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+.gallery_img3 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 300px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+.gallery_img4 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 300px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+.gallery_img5 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 300px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+.gallery_img6 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 600px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+.gallery_img7 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 300px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+.gallery_img8 {
+    flex: 1 1 auto;
+    width: auto;
+    height: auto;
+    min-width: 300px;
+    max-height: 400px;
+    margin: 10px;
+    object-fit: cover;
+    /*restreindre la taille d'un contenu à celle de son parent tout en conservant son ratio*/
+}
+
+footer {
+    /* just for demo */
+    background-color: #FAFAFA;
+    border-style: none;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+}
+
+div.marcaFooter {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    padding-top: 20px;
+}
+
+div.marcaFooter h3 {
+    font-size: 18px;
+    color: black;
+}
+
+.footer_principalOptions {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0 0em;
+}
+
+.divnav-item-footer {
+    padding: 0.6em 2em;
+    display: inline-block;
+    color: black;
+}
+
+.divnav-item-footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.spacer {
+    width: 100%;
+    height: 100px;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    /* make things invisible upon start */
+    -webkit-animation: fadeIn ease-in 1;
+    /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.fade-in.one {
+    -webkit-animation-delay: 0.1s;
+    -moz-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+}
+
+.fade-in.two {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.fade-in.three {
+    -webkit-animation-delay: 1.8s;
+    -moz-animation-delay: 1.8s;
+    animation-delay: 1.8s;
+}
+
+.fade-in.four {
+    -webkit-animation-delay: 2.6s;
+    -moz-animation-delay: 2.6s;
+    animation-delay: 2.6s;
+}
+
+
+/*******BTN ADMIN********/
+
+div.buttom_admin {
+    position: absolute;
+    top: 35px;
+    right: 50px;
+}
+
+.animacion {
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.action-button {
+    position: relative;
+    padding: 10px 20px;
+    margin: 0px 10px 10px 0px;
+    float: left;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.azul {
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+}
+
+.action-button:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    border-bottom: 1px solid;
+}

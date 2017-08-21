@@ -83,87 +83,106 @@
                 <a href="{{ route ('Merch', $type->name )}}">{{$type->name}}</a>
               @endforeach
             </div>
-            <br></br>
-            <table class="table" align="center">
-              <thead>
-                <th>Name of new product</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Picture</th>
-                <th colspan="2">Type</th>
-              </thead>
-              <tbody>
-                <tr>
-                  {!!Form::open(['route'=>'product.store', 'method'=>'POST','files' => true])!!}
-                    <input type="hidden" name="_token" value="{{ csrf_token()}}" id="token"></input>
-                    <td><input type="text" name="name"></input></td>
-                    <td><input type="text" name="description"></input></td>
-                    <td><input type="number" name="price" step="0.01" min="1"></input></td>
-                    <td><input type="file" name="picture"></input></td>
-                    <td><select name="type_id">
-                      	<?php foreach ($types as $type) { ?>
-                      		<option value="<?php echo $type->id ?>"><?php echo $type->name;?></option>
-                      	<?php } ?>
-                       </select>
+            <br><br>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+                <div class="content" align="center">
+                  <table class="table table-striped table-bordered table-condensed table-hover" >
+                    <tbody>
+                      {!!Form::open(['route'=>'product.store', 'method'=>'POST','files' => true])!!}
+                      <input type="hidden" name="_token" value="{{ csrf_token()}}" id="token"></input>
+                      <tr>
+                          <td>Name of new product</td>
+                          <td><input type="text" name="name"></input></td>
+                      </tr>
+                      <tr>
+                          <td>Description</td>
+                          <td><input type="text" name="description"></input></td>
+                      </tr>
+                      <tr>
+                          <td>Price</td>
+                          <td><input type="number" name="price" step="0.01" min="1"></input></td>
+                      </tr>
+                      <tr>
+                          <td>Picture</td>
+                          <td><input type="file" name="picture"></input></td>
+                      </tr>
+                      <tr>
+                          <td>Type</td>
+                          <td><select name="type_id">
+                              <?php foreach ($types as $type) { ?>
+                                <option value="<?php echo $type->id ?>"><?php echo $type->name;?></option>
+                              <?php } ?>
+                            </select>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td colspan="2">{!!Form::submit('Add',['class'=>'btn btn-success'])!!}</td>
+                      </tr>
+                      {!!Form::close()!!}
+                    </tbody>
+                  </table>
+                </div>
+                
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  class="content">
+                
+                <table class="table" align="center">
+                  <thead>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                  </thead>
+                  @foreach($products as $product)
+                    <?php
+                      $mysqli = new mysqli("localhost", "root", "", "test2");
+                      if ($mysqli->connect_errno) {
+                          echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+                      }
+                      $acentos = $mysqli->query("SET NAMES 'utf8'");
+                      //Get the id of the merch
+                      $type_id=$product->type_id;
+                      //Getting the data about the type, most important is the name of the category
+                      $query = $mysqli->query("select * from merchtypes where id='$type_id'");
+                      $row = $query->fetch_assoc();
+                      $type = $row['name'];
+                    ?>
+                  <tbody>
+                    <td>{{$product->name}}</td>
+                    <td>{{'$'.$product->price}}</td>
+                    <td><?php echo $type; ?></td>
+                    <?php
+                      if ($product->picture == null) {
+                        $pic = "fashion.jpg";
+                      }
+                      else {
+                        $pic = $product->picture;
+                      }
+                    ?>
+                    @if ($product->id <= 15)
+                      <td><img src="{{asset('products_images/'.$pic)}}" width="100" height="85"></img></td>
+                    @endif
+                    @if ($product->id > 15)
+                      <td><img src="{{asset('products_images/'.$pic)}}" width="100" height="85"/></td>
+                    @endif
+                    <td>
+                      <button  type="button" value="<?php  echo $product->id?>" Onclick="mostrar(this.value);" class="btn btn-info btn-sm" data-toggle='modal'
+                        data-target='#myModal'>Edit product</button>
                     </td>
-                    <td>{!!Form::submit('Add',['class'=>'btn btn-success'])!!}</td>
-                  {!!Form::close()!!}
-                </tr>
-              </tbody>
-            </table>
-            <br></br>
-            <table align="center">
-              <thead>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Type</th>
-                <th>Image</th>
-                <th>Actions</th>
-              </thead>
-              @foreach($products as $product)
-                <?php
-                  $mysqli = new mysqli("localhost", "root", "", "test");
-                  if ($mysqli->connect_errno) {
-                      echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-                  }
-                  $acentos = $mysqli->query("SET NAMES 'utf8'");
-                  //Get the id of the merch
-                  $type_id=$product->type_id;
-                  //Getting the data about the type, most important is the name of the category
-                  $query = $mysqli->query("select * from merchtypes where id='$type_id'");
-                  $row = $query->fetch_assoc();
-                  $type = $row['name'];
-                ?>
-              <tbody>
-                <td>{{$product->name}}</td>
-                <td>{{'$'.$product->price}}</td>
-                <td><?php echo $type; ?></td>
-                <?php
-                  if ($product->picture == null) {
-                    $pic = "fashion.jpg";
-                  }
-                  else {
-                    $pic = $product->picture;
-                  }
-                 ?>
-                @if ($product->id <= 15)
-                  <td><img src={{$pic}} width="100" height="85"></img></td>
-                @endif
-                @if ($product->id > 15)
-                  <td><img src="../products_images/{{$pic}}" width="100" height="85"/></td>
-                @endif
-                <td>
-                  <button  type="button" value="<?php  echo $product->id?>"
-                    Onclick="mostrar(this.value);" class="btn btn-info btn-sm" data-toggle='modal'
-                    data-target='#myModal'>Edit product</button>
-                </td>
-                <td>
-                  {!!Form::model($product,['route'=>['product.destroy',$product->id],'method'=>'DELETE'])!!}
-          <button type="submit" onclick="return confirm('¿Do you really want to delete this item?')" class="btn-danger btn-sm">Delete product</button>
-                </td>
-              </tbody>
-            @endforeach
-            </table>
+                    <td>
+                      {!!Form::model($product,['route'=>['product.destroy',$product->id],'method'=>'DELETE'])!!}
+                      <button type="submit" onclick="return confirm('¿Do you really want to delete this item?')" class="btn-danger btn-sm">Delete product</button>
+                    </td>
+                  </tbody>
+                  
+                @endforeach
+                </table>
+              </div>
+            </div>
+
+            
         </div>
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">

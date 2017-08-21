@@ -10,8 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',        function () { return view('templates.all');});
+Route::get('/apparel', function () { return view('templates.apparel'); });
+Route::get('/eyewear', function () { return view('templates.eyewear'); });
+Route::get('/leather', function () { return view('templates.leather'); });
 
-Route::get('/','ProductController@index');
+Route::get('/producto','ProductController@index');
 Route::get('Merch/{type}','ProductController@showProduct')->name('Merch');
 Route::get('product/showDetails/{id}','ProductController@show_details')->name('showDetails');
 Route::resource('product','ProductController');

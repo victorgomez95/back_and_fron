@@ -168,6 +168,7 @@
                       <td><img src="{{asset('products_images/'.$pic)}}" width="100" height="85"/></td>
                     @endif
                     <td>
+                      <a href="{{URL::action('ProductController@edit',$product->id)}}"><button class="btn btn-info">&nbsp;&nbsp;&nbsp;<i class="fa fa-trash"></i>&nbsp;Edit&nbsp;&nbsp;</button></a>
                       <button  type="button" value="<?php  echo $product->id?>" Onclick="mostrar(this.value);" class="btn btn-info btn-sm" data-toggle='modal'
                         data-target='#myModal'>Edit product</button>
                     </td>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\MerchType;
+use Redirect;
+use Illuminate\Support\Facades\Input;
 use DB;
 
 class ProductController extends Controller
@@ -77,6 +79,7 @@ class ProductController extends Controller
                ->get();
     return view('welcome',['products' => $products, 'types' => $types]);
   }
+
   public function show_details(Request $request,$id){
     if ($request->ajax()) {
       $product = Product::find($id);
@@ -84,4 +87,25 @@ class ProductController extends Controller
       return response()->json(['product' => $product, 'types' => $types]);
     }
   }
+
+  public function edit($id){
+        $types  = MerchType::all();
+        return view("modal",["Product"=>Product::findOrFail($id),'types' => $types]);
+    }
+
+   //method -> PATCH
+    public function update(Request $request,$id){
+        $product = Product::findOrFail($id);
+        $product->name       = $request->get('name');
+        $product->price    = $request->get('price');
+
+        /*if(Input::hasFile('picture')){
+            $file = Input::file('picture');
+            $file->move(public_path().'products_images/',$file->getClientOriginalName());
+            $product->picture = $file->getClientOriginalName();
+        }*/
+        $product->update();
+        return Redirect::to('producto');
+    }
+
 }
